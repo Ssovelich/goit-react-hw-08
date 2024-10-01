@@ -1,7 +1,7 @@
 import styles from "./SearchBox.module.css";
 import { useId } from "react";
 
-const SearchBox = () => {
+const SearchBox = ({ value, onFilter }) => {
   const searchFieldId = useId();
   return (
     <div className={styles.searchWrap}>
@@ -12,6 +12,8 @@ const SearchBox = () => {
         className={styles.searchInput}
         type="text"
         name="search"
+        value={value}
+        onChange={(event) => onFilter(event.target.value)}
         id={searchFieldId}
       />
     </div>

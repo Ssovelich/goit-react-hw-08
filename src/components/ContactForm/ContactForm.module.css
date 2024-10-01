@@ -21,6 +21,9 @@
   height: 40px;
   border: 1px solid #4d4c4cc2;
   border-radius: 4px;
+  padding-left: 8px;
+  font-weight: 300;
+  font-size: 18px;
 }
 .field:hover {
   border: 1px solid #2745f1c2;
@@ -38,4 +41,7 @@
 }
 .btn:hover {
   color: #2745f1c2;
+}
+.errorMessage {
+  color: red;
 }
