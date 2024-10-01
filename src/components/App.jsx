@@ -34,7 +34,7 @@ function App() {
     });
   }
 
-  const visibleContacts = initialContacts.filter((contact) =>
+  const visibleContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
   );
 
