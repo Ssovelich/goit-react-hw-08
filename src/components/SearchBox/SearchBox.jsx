@@ -3,6 +3,7 @@ import { useId } from "react";
 
 const SearchBox = ({ value, onFilter }) => {
   const searchFieldId = useId();
+
   return (
     <div className={styles.searchWrap}>
       <label className={styles.searchLabel} htmlFor={searchFieldId}>

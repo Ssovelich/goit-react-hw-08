@@ -1,6 +1,7 @@
 import * as Yup from "yup";
 import { useId } from "react";
 import { nanoid } from "nanoid";
+import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
 
@@ -8,6 +9,12 @@ const initialValues = {
   name: "",
   number: "",
 };
+
+const mask = () => (
+  <div>
+    <MaskedInput mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]} />
+  </div>
+);
 
 const ContsctSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,6 +62,7 @@ const ContactForm = ({ onAdd }) => {
           </label>
           <Field
             className={styles.field}
+            component={mask}
             type="tel"
             name="number"
             id={numberFieldId}
