@@ -10,18 +10,17 @@ const initialValues = {
   number: "",
 };
 
-const mask = () => (
-  <div>
-    <MaskedInput mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]} />
-  </div>
-);
-
 const ContsctSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  number: Yup.string().min(9, "xxx-xx-xx").required("Required"),
+  number: Yup.string()
+    .matches(
+      /^\d{3}-\d{2}-\d{2}$/,
+      "Phone number must be in the format 777-77-77"
+    )
+    .required("Required"),
 });
 
 const ContactForm = ({ onAdd }) => {
@@ -39,44 +38,49 @@ const ContactForm = ({ onAdd }) => {
       onSubmit={handleSubmit}
       validationSchema={ContsctSchema}
     >
-      <Form className={styles.form}>
-        <div className={styles.formItem}>
-          <label className={styles.formItemLabel} htmlFor={nameFieldId}>
-            Name
-          </label>
-          <Field
-            className={styles.field}
-            type="text"
-            name="name"
-            id={nameFieldId}
-          />
-          <ErrorMessage
-            name="name"
-            component="span"
-            className={styles.errorMessage}
-          />
-        </div>
-        <div className={styles.formItem}>
-          <label className={styles.formItemLabel} htmlFor={numberFieldId}>
-            Number
-          </label>
-          <Field
-            className={styles.field}
-            component={mask}
-            type="tel"
-            name="number"
-            id={numberFieldId}
-          />
-          <ErrorMessage
-            name="number"
-            component="span"
-            className={styles.errorMessage}
-          />
-        </div>
-        <button className={styles.btn} type="submit">
-          Add contact
-        </button>
-      </Form>
+      {({ values, setFieldValue }) => (
+        <Form className={styles.form}>
+          <div className={styles.formItem}>
+            <label className={styles.formItemLabel} htmlFor={nameFieldId}>
+              Name
+            </label>
+            <Field
+              className={styles.field}
+              type="text"
+              name="name"
+              id={nameFieldId}
+              placeholder="Anna Kuper"
+            />
+            <ErrorMessage
+              name="name"
+              component="span"
+              className={styles.errorMessage}
+            />
+          </div>
+          <div className={styles.formItem}>
+            <label className={styles.formItemLabel} htmlFor={numberFieldId}>
+              Number
+            </label>
+            <MaskedInput
+              mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]}
+              value={values.number}
+              onChange={(e) => setFieldValue("number", e.target.value)}
+              placeholder="777-77-77"
+              className={styles.field}
+              name="number"
+              id={nameFieldId}
+            />
+            <ErrorMessage
+              name="number"
+              component="span"
+              className={styles.errorMessage}
+            />
+          </div>
+          <button className={styles.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
