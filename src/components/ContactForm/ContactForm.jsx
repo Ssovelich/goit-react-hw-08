@@ -20,19 +20,6 @@ const ContsctSchema = Yup.object().shape({
       /^\d{3}-\d{2}-\d{2}$/,
       "Phone number must be in the format 777-77-77"
     )
-    // .matches(
-    //   /^(\d{2} )\d{3}-\d{2}-\d{2}$/,
-    //   "Phone number must be in the format +38(077)777-77-77"
-    // )
-    // .matches(
-    //   /^\+38(0\d{2})\d{3}-\d{2}-\d{2}$/,
-    //   "Phone number must be in the format +38(077)777-77-77"
-    // )
-
-    // .matches(
-    //   /^((\\+[1-9]{2})|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-    //   "Phone number is not valid"
-    // )
     .required("Required"),
 });
 
@@ -76,44 +63,8 @@ const ContactForm = ({ onAdd }) => {
             </label>
             <MaskedInput
               mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]}
-              // mask={[
-              //   "+38(0",
-              //   /\d/,
-              //   /\d/,
-              //   ")",
-              //   /\d/,
-              //   /\d/,
-              //   /\d/,
-              //   "-",
-              //   /\d/,
-              //   /\d/,
-              //   "-",
-              //   /\d/,
-              //   /\d/,
-              // ]}
-
-              // mask={[
-              //   "+38(0",
-              //   /\d/,
-              //   /\d/,
-              //   ")",
-              //   /\d/,
-              //   /\d/,
-              //   /\d/,
-              //   "-",
-              //   /\d/,
-              //   /\d/,
-              //   "-",
-              //   /\d/,
-              //   /\d/,
-              // ]}
               value={values.number}
               onChange={(event) => setFieldValue("number", event.target.value)}
-              // onFocus={(e) => {
-              //   if (!values.number) {
-              //     setFieldValue("number", "+38(0");
-              //   }
-              // }}
               placeholder="777-77-77"
               className={styles.field}
               name="number"

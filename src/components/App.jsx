@@ -1,48 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
-import initialContacts from "../contacts.json";
+// import initialContacts from "../contacts.json";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [contacts, setContacts] = useState(() => {
-    const storagedContacts = localStorage.getItem("contacts");
+  // Підписуємося на значення контастів зі стору
+  const contacts = useSelector((state) => state.contactsData.contacts);
+  // Функція відправки команди
+  const dispatch = useDispatch();
 
-    if (storagedContacts !== null) {
-      return JSON.parse(storagedContacts);
-    }
-
-    return initialContacts;
-  });
+  // console.log(contacts);
 
   const [filter, setFilter] = useState("");
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  }, [contacts]);
 
   function addContact(newContact) {
-    setContacts((prevState) => {
-      return [...prevState, newContact];
-    });
+    const action = { tupe: "contacts/addContact", payload: newContact };
+    dispatch(action);
   }
 
   function deleteContact(contactId) {
-    setContacts((prevState) => {
-      return prevState.filter((contact) => contact.id !== contactId);
-    });
+    const action = { tupe: "contacts/deleteContact", payload: contactId };
+    dispatch(action);
   }
-
-  const visibleContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
-  );
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
+      <ContactList contacts={contacts} onDelete={deleteContact} />
     </div>
   );
 }
