@@ -17,12 +17,13 @@ function App() {
   const [filter, setFilter] = useState("");
 
   function addContact(newContact) {
-    const action = { tupe: "contacts/addContact", payload: newContact };
+    const finalContact = { ...newContact };
+    const action = { type: "contacts/addContact", payload: finalContact };
     dispatch(action);
   }
 
   function deleteContact(contactId) {
-    const action = { tupe: "contacts/deleteContact", payload: contactId };
+    const action = { type: "contacts/deleteContact", payload: contactId };
     dispatch(action);
   }
 
