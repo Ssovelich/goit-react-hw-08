@@ -4,7 +4,7 @@ import styles from "./ContactList.module.css";
 
 const ContactList = () => {
   // Підписуємося на значення контастів зі стору
-  const contacts = useSelector((state) => state.contactsData.contacts);
+  const contacts = useSelector((state) => state.contactsData.items);
   // Підписуємося на значення фільтру зі стору
   const filters = useSelector((state) => state.filters.filters);
 
