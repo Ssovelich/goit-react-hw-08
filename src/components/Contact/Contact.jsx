@@ -8,7 +8,10 @@ const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (id) => {
+    // Створюємо action(інструкцію)
+    // const action = { type: "contacts/deleteContact", payload: id };
     const action = deleteContact(id);
+    // Надсилаємо action в store
     dispatch(action);
   };
 

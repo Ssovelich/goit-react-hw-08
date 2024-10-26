@@ -33,7 +33,10 @@ const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     const finalContact = { id: nanoid(), ...values };
+    // Створюємо action(інструкцію)
+    // const action = { type: "contacts/addContact", payload: finalContact };
     const action = addContact(finalContact);
+    // Надсилаємо action в store
     dispatch(action);
 
     actions.resetForm();

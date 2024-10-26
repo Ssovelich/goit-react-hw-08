@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
-  contacts:
-    //Спочатку береться інфа з локального сховища, якщо пусто, то підставити пустий масив
-    JSON.parse(localStorage.getItem("contacts")) ?? [],
+  contacts: [],
 };
 
 // export const contactsReducer = (state = INITIAL_STATE, action) => {
