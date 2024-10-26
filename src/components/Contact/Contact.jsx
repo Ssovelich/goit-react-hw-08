@@ -1,8 +1,17 @@
 import styles from "./Contact.module.css";
 import { FaUser } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-const Contact = ({ name, number, id, onDelete }) => {
+const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch();
+
+  const onDeleteContact = (id) => {
+    const action = deleteContact(id);
+    dispatch(action);
+  };
+
   return (
     <>
       <li className={styles.contactListItem}>
@@ -21,7 +30,7 @@ const Contact = ({ name, number, id, onDelete }) => {
         <button
           className={styles.btn}
           onClick={() => {
-            onDelete(id);
+            onDeleteContact(id);
           }}
         >
           Delete

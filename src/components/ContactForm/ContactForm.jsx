@@ -4,6 +4,8 @@ import { nanoid } from "nanoid";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const initialValues = {
   name: "",
@@ -23,12 +25,17 @@ const ContsctSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = ({ onAdd }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const nameFieldId = useId();
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    onAdd({ id: nanoid(), ...values });
+    const finalContact = { id: nanoid(), ...values };
+    const action = addContact(finalContact);
+    dispatch(action);
+
     actions.resetForm();
   };
 

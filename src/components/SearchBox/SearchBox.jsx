@@ -1,7 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./SearchBox.module.css";
 import { useId } from "react";
+import { setFilters } from "../../redux/filtersSlice";
 
-const SearchBox = ({ value, onFilter }) => {
+const SearchBox = () => {
+  // Підписуємося на значення фільтру зі стору
+  const filters = useSelector((state) => state.filters.filters);
+  // Функція відправки команди
+  const dispatch = useDispatch();
+
+  // console.log(filters);
+
   const searchFieldId = useId();
 
   return (
@@ -13,8 +22,11 @@ const SearchBox = ({ value, onFilter }) => {
         className={styles.searchInput}
         type="text"
         name="search"
-        value={value}
-        onChange={(event) => onFilter(event.target.value)}
+        value={filters}
+        onChange={(event) => {
+          const action = setFilters(event.target.value);
+          dispatch(action);
+        }}
         id={searchFieldId}
       />
     </div>
