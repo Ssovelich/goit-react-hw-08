@@ -8,7 +8,7 @@ const ContactList = () => {
   // Підписуємося на значення фільтру зі стору
   const filters = useSelector((state) => state.filters.filters);
 
-  console.log(contacts);
+  // console.log(contacts);
 
   const visibleContacts = contacts.filter(
     (contact) =>
