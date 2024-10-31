@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import contactsBasic from "../contacts.json";
+import { fetchContacts, addContact, deleteContact } from "./contactsOps";
+addContact;
+// import contactsBasic from "../contacts.json";
 
 const INITIAL_STATE = {
-  items: contactsBasic,
+  items: [],
+  loading: false,
+  error: false,
 };
 
 // export const contactsReducer = (state = INITIAL_STATE, action) => {
@@ -28,19 +32,45 @@ const INITIAL_STATE = {
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: INITIAL_STATE,
-  reducers: {
-    addContact: (state, action) => {
-      state.items.push(action.payload);
-    },
-    deleteContact: (state, action) => {
-      state.items = state.items.filter(
-        (contact) => contact.id !== action.payload
-      );
-    },
-  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchContacts.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(addContact.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items.push(action.payload);
+      })
+      .addCase(addContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteContact.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = state.items.filter((item) => item.id !== action.payload);
+      })
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      }),
 });
 
 //Генеруємо reducer
 export const contactsReducer = contactsSlice.reducer;
-//Генеруємо функцію команди
-export const { addContact, deleteContact } = contactsSlice.actions;

@@ -1,11 +1,12 @@
 import * as Yup from "yup";
 import { useId } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
+// import { addContact } from "../../redux/contactsSlice";
 
 const initialValues = {
   name: "",
@@ -19,8 +20,8 @@ const ContsctSchema = Yup.object().shape({
     .required("Required"),
   number: Yup.string()
     .matches(
-      /^\d{3}-\d{2}-\d{2}$/,
-      "Phone number must be in the format 777-77-77"
+      /^\d{3}-\d{3}-\d{4}$/,
+      "Phone number must be in the format 777-777-7777"
     )
     .required("Required"),
 });
@@ -32,12 +33,13 @@ const ContactForm = () => {
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    const finalContact = { id: nanoid(), ...values };
+    dispatch(addContact({ ...values }));
+    // const finalContact = { ...values };
     // Створюємо action(інструкцію)
     // const action = { type: "contacts/addContact", payload: finalContact };
-    const action = addContact(finalContact);
+    // const action = addContact(finalContact);
     // Надсилаємо action в store
-    dispatch(action);
+    // dispatch(action);
 
     actions.resetForm();
   };
@@ -72,14 +74,26 @@ const ContactForm = () => {
               Number
             </label>
             <MaskedInput
-              mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]}
+              mask={[
+                /\d/,
+                /\d/,
+                /\d/,
+                "-",
+                /\d/,
+                /\d/,
+                /\d/,
+                "-",
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+              ]}
               value={values.number}
               onChange={(event) => setFieldValue("number", event.target.value)}
-              placeholder="777-77-77"
+              placeholder="777-777-7777"
               className={styles.field}
               name="number"
-              id={nameFieldId}
-              // guide={false}
+              id={numberFieldId}
             />
             <ErrorMessage
               name="number"
