@@ -9,7 +9,7 @@ const ContactList = () => {
   return (
     <div>
       <ul className={styles.contactList}>
-        {visibleContacts.map((contact) => {
+        {visibleContacts?.map((contact) => {
           return (
             <Contact
               created={contact.createdAt}
