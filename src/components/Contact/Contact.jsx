@@ -5,12 +5,11 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsOps";
 // import { deleteContact } from "../../redux/contactsSlice";
 
-const Contact = ({ name, number, id }) => {
+const Contact = ({ name, number, id, created }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (id) => {
     const action = deleteContact(id);
-
     dispatch(action);
   };
 
@@ -28,7 +27,9 @@ const Contact = ({ name, number, id }) => {
             &nbsp;
             {number}
           </p>
+          <p className={styles.created}>Updated: {created}</p>
         </div>
+
         <button
           className={styles.btn}
           onClick={() => {

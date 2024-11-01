@@ -17,6 +17,10 @@
   font-weight: 500;
   font-size: 20px;
 }
+.created {
+  font-weight: 300;
+  font-size: 12px;
+}
 .btn {
   display: flex;
   justify-content: center;
