@@ -58,6 +58,7 @@ export const selectLoading = (state) => state.contactsData.loading;
 export const selectError = (state) => state.contactsData.error;
 export const selectFilters = (state) => state.filters.filters;
 
+// Мемоізований селектор
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilters],
   (contacts, filters) => {
