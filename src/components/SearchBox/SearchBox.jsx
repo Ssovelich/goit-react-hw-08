@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./SearchBox.module.css";
 import { useId } from "react";
 import { setFilters } from "../../redux/filtersSlice";
+import { selectFilters } from "../../redux/contactsSlice";
 
 const SearchBox = () => {
   // Підписуємося на значення фільтру зі стору
-  const filters = useSelector((state) => state.filters.filters);
+  const filters = useSelector(selectFilters);
   // Функція відправки команди
   const dispatch = useDispatch();
 

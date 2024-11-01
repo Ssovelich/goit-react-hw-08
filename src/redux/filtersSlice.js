@@ -4,16 +4,6 @@ const INITIAL_STATE = {
   filters: "",
 };
 
-// export const filterReducer = (state = INITIAL_STATE, action) => {
-//   switch (action.type) {
-//     case "filters/setFilters": {
-//       return { ...state, filters: action.payload };
-//     }
-//     default:
-//       return state;
-//   }
-// };
-
 // Створюємо slice
 const filtersSlice = createSlice({
   name: "filters",

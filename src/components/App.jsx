@@ -10,8 +10,6 @@ import { selectError, selectLoading } from "../redux/contactsSlice";
 
 function App() {
   const dispatch = useDispatch();
-  // const loading = useSelector((state) => state.contactsData.loading);
-  // const error = useSelector((state) => state.contactsData.error);
 
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);

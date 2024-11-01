@@ -3,7 +3,6 @@ import { FaUser } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsOps";
-// import { deleteContact } from "../../redux/contactsSlice";
 
 const Contact = ({ name, number, id, created }) => {
   const dispatch = useDispatch();
@@ -27,7 +26,9 @@ const Contact = ({ name, number, id, created }) => {
             &nbsp;
             {number}
           </p>
-          <p className={styles.created}>Updated: {created}</p>
+          <p className={styles.created}>
+            Updated: {created.substring(0, 10)} {created.substring(11, 19)}
+          </p>
         </div>
 
         <button

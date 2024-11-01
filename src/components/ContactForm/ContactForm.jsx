@@ -1,12 +1,10 @@
 import * as Yup from "yup";
 import { useId } from "react";
-// import { nanoid } from "nanoid";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsOps";
-// import { addContact } from "../../redux/contactsSlice";
 
 const initialValues = {
   name: "",
@@ -34,12 +32,6 @@ const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact({ ...values }));
-    // const finalContact = { ...values };
-    // Створюємо action(інструкцію)
-    // const action = { type: "contacts/addContact", payload: finalContact };
-    // const action = addContact(finalContact);
-    // Надсилаємо action в store
-    // dispatch(action);
 
     actions.resetForm();
   };
