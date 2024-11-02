@@ -9,6 +9,7 @@ import { addContact } from "../../redux/contactsOps";
 const initialValues = {
   name: "",
   number: "",
+  email: "",
 };
 
 const ContsctSchema = Yup.object().shape({
@@ -22,6 +23,9 @@ const ContsctSchema = Yup.object().shape({
       "Phone number must be in the format 777-777-7777"
     )
     .required("Required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
 });
 
 const ContactForm = () => {
@@ -29,6 +33,7 @@ const ContactForm = () => {
 
   const nameFieldId = useId();
   const numberFieldId = useId();
+  const emailFieldId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact({ ...values }));
@@ -89,6 +94,23 @@ const ContactForm = () => {
             />
             <ErrorMessage
               name="number"
+              component="span"
+              className={styles.errorMessage}
+            />
+          </div>
+          <div className={styles.formItem}>
+            <label className={styles.formItemLabel} htmlFor={emailFieldId}>
+              Email
+            </label>
+            <Field
+              className={styles.field}
+              type="email"
+              name="email"
+              id={emailFieldId}
+              placeholder="example@gmail.com"
+            />
+            <ErrorMessage
+              name="email"
               component="span"
               className={styles.errorMessage}
             />

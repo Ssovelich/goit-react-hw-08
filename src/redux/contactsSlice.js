@@ -68,7 +68,8 @@ export const selectFilteredContacts = createSelector(
           .toLowerCase()
           .trim()
           .includes(filters.toLowerCase().trim()) ||
-        contact.number.toLowerCase().includes(filters.toLowerCase().trim())
+        contact.number.toLowerCase().includes(filters.toLowerCase().trim()) ||
+        contact.email.toLowerCase().includes(filters.toLowerCase().trim())
     );
   }
 );
