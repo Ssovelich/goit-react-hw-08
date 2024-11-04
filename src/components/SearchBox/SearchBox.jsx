@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./SearchBox.module.css";
 import { useId } from "react";
-import { setFilters } from "../../redux/filtersSlice";
-import { selectFilters } from "../../redux/contactsSlice";
+import { setFilters } from "../../redux/filters/slice";
+import { selectFilters } from "../../redux/filters/selectors";
+// import { selectFilters } from "../../redux/contacts/slice";
 
 const SearchBox = () => {
   // Підписуємося на значення фільтру зі стору
@@ -17,7 +18,7 @@ const SearchBox = () => {
   return (
     <div className={styles.searchWrap}>
       <label className={styles.searchLabel} htmlFor={searchFieldId}>
-        Fild contacts by name
+        Fild contacts by name or by number
       </label>
       <input
         className={styles.searchInput}

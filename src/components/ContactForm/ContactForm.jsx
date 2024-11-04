@@ -4,12 +4,11 @@ import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 
 const initialValues = {
   name: "",
   number: "",
-  email: "",
 };
 
 const ContsctSchema = Yup.object().shape({
@@ -17,15 +16,10 @@ const ContsctSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  number: Yup.string()
-    .matches(
-      /^\d{3}-\d{3}-\d{4}$/,
-      "Phone number must be in the format 777-777-7777"
-    )
-    .required("Required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
+  number: Yup.string().matches(
+    /^\d{3}-\d{3}-\d{4}$/,
+    "Phone number must be in the format 777-777-7777"
+  ),
 });
 
 const ContactForm = () => {
@@ -33,7 +27,6 @@ const ContactForm = () => {
 
   const nameFieldId = useId();
   const numberFieldId = useId();
-  const emailFieldId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact({ ...values }));
@@ -94,23 +87,6 @@ const ContactForm = () => {
             />
             <ErrorMessage
               name="number"
-              component="span"
-              className={styles.errorMessage}
-            />
-          </div>
-          <div className={styles.formItem}>
-            <label className={styles.formItemLabel} htmlFor={emailFieldId}>
-              Email
-            </label>
-            <Field
-              className={styles.field}
-              type="email"
-              name="email"
-              id={emailFieldId}
-              placeholder="example@gmail.com"
-            />
-            <ErrorMessage
-              name="email"
               component="span"
               className={styles.errorMessage}
             />
