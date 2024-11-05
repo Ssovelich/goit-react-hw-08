@@ -2,14 +2,11 @@ import * as Yup from "yup";
 import { useId } from "react";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import styles from "./ContactForm.module.css";
+import styles from "./ContactEditForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-
-const initialValues = {
-  name: "",
-  number: "",
-};
+import { editContact } from "../../redux/contacts/operations";
+import { setCurentContact } from "../../redux/contacts/slice";
+import { IoMdClose } from "react-icons/io";
 
 const ContsctSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,26 +21,33 @@ const ContsctSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = () => {
+const ContactEditForm = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const nameFieldId = useId();
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ ...values }));
+    dispatch(editContact({ ...values, id }));
 
     actions.resetForm();
   };
 
+  const closeEdit = () => {
+    dispatch(setCurentContact(null));
+  };
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ name, number }}
       onSubmit={handleSubmit}
       validationSchema={ContsctSchema}
     >
       {({ values, setFieldValue }) => (
         <Form className={styles.form}>
+          <button onClick={closeEdit} className={styles.btnClose} type="button">
+            <IoMdClose size={18} />
+          </button>
           <div className={styles.formItem}>
             <label className={styles.label} htmlFor={nameFieldId}>
               Name
@@ -81,7 +85,7 @@ const ContactForm = () => {
             />
           </div>
           <button className={styles.btn} type="submit">
-            Add contact
+            Save contact
           </button>
         </Form>
       )}
@@ -89,4 +93,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ContactEditForm;

@@ -4,6 +4,7 @@ import { selectFilters } from "../filters/selectors";
 export const selectContacts = (state) => state.contactsData.items;
 export const selectLoading = (state) => state.contactsData.loading;
 export const selectError = (state) => state.contactsData.error;
+export const selectCuretnContact = (state) => state.contactsData.curentContact;
 
 // Мемоізований селектор
 export const selectFilteredContacts = createSelector(

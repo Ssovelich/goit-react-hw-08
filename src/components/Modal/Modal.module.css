@@ -1,0 +1,25 @@
+.backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  background-image: linear-gradient(
+    to right,
+    #9eefe1 0%,
+    #4830f0 51%,
+    #9eefe1 100%
+  );
+  width: 400px;
+  height: 400px;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 16px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}

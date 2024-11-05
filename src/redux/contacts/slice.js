@@ -1,16 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from "./operations";
 
 const INITIAL_STATE = {
   items: null,
   loading: false,
   error: false,
+  isModalOpen: false,
+  contactDelete: null,
+  isEdit: false,
+  editContact: null,
 };
 
 // Створюємо slice
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: INITIAL_STATE,
+  reducers: {
+    setCurentContact(state, action) {
+      state.curentContact = action.payload;
+    },
+    // openModal(state, action) {
+    //   state.isModalOpen = true;
+    //   state.contactDelete = action.payload;
+    // },
+    // closeModal(state) {
+    //   state.isModalOpen = false;
+    //   state.contactDelete = null;
+    // },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchContacts.pending, (state) => {
@@ -50,29 +72,24 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editContact.pending, (state) => {
+        state.loading = true;
+        state.error = false;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = state.items.map((item) =>
+          item.id !== action.payload.id ? item : action.payload
+        );
+        state.curentContact = null;
+      })
+      .addCase(editContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       }),
 });
 
-// export const selectContacts = (state) => state.contactsData.items;
-// export const selectLoading = (state) => state.contactsData.loading;
-// export const selectError = (state) => state.contactsData.error;
-// export const selectFilters = (state) => state.filters.filters;
-
-// // Мемоізований селектор
-// export const selectFilteredContacts = createSelector(
-//   [selectContacts, selectFilters],
-//   (contacts, filters) => {
-//     return contacts?.filter(
-//       (contact) =>
-//         contact.name
-//           .toLowerCase()
-//           .trim()
-//           .includes(filters.toLowerCase().trim()) ||
-//         contact.number.toLowerCase().includes(filters.toLowerCase().trim()) ||
-//         contact.email.toLowerCase().includes(filters.toLowerCase().trim())
-//     );
-//   }
-// );
-
-//Генеруємо reducer
+// export const { openModal, closeModal } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
+export const { setCurentContact } = contactsSlice.actions;

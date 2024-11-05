@@ -19,7 +19,6 @@ const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
     console
-      .log(values)
       .unwrap()
       .then(() => {
         console.log("login success");

@@ -1,12 +1,12 @@
 .form {
   display: flex;
   flex-direction: column;
-  border: 1px solid #226160;
+  border: 1px solid #adc177;
   border-radius: 8px;
   padding: 15px;
   width: 400px;
-  margin-bottom: 20px;
-  background: #226160;
+  margin: 20px auto;
+  background: #adc177;
   color: #ffffff;
 }
 .formItem {
@@ -21,7 +21,7 @@
 }
 .field {
   height: 40px;
-  border: 2px solid #226160;
+  border: 2px solid #adc177;
   border-radius: 4px;
   padding-left: 8px;
   font-weight: 300;
@@ -29,7 +29,7 @@
   outline: transparent;
 }
 .field:hover {
-  border: 2px solid #a95f4d;
+  border: 2px solid #655247;
 }
 .btn {
   display: flex;
