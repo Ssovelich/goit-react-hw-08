@@ -1,4 +1,5 @@
 import DocumentTitle from "../../components/DocumentTitle";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
@@ -6,7 +7,7 @@ const HomePage = () => {
       <DocumentTitle>Home</DocumentTitle>
 
       <div>
-        <h1>Phonebook welcome page🎉</h1>
+        <h1 className={styles.title}>Phonebook welcome page🎉</h1>
       </div>
     </div>
   );

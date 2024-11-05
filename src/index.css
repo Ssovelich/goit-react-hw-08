@@ -77,11 +77,10 @@ button:focus-visible {
   font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #f1e2ad;
+  background-color: #d9c49c;
 }
 body {
   margin: 0;
-  /* background: #f1e2ad; */
   padding: 20px;
 }
 h1 {

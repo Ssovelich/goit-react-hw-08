@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const contactsInstance = axios.create({
+export const contactsInstance = axios.create({
   baseURL: "https://connections-api.goit.global",
 });
 // Утиліта для додавання JWT
