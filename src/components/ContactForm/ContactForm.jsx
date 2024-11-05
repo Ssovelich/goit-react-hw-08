@@ -16,10 +16,12 @@ const ContsctSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  number: Yup.string().matches(
-    /^\d{3}-\d{3}-\d{4}$/,
-    "Phone number must be in the format 777-777-7777"
-  ),
+  number: Yup.string()
+    .matches(
+      /^\d{3}-\d{3}-\d{4}$/,
+      "Phone number must be in the format 777-777-7777"
+    )
+    .required("Required"),
 });
 
 const ContactForm = () => {
@@ -43,7 +45,7 @@ const ContactForm = () => {
       {({ values, setFieldValue }) => (
         <Form className={styles.form}>
           <div className={styles.formItem}>
-            <label className={styles.formItemLabel} htmlFor={nameFieldId}>
+            <label className={styles.label} htmlFor={nameFieldId}>
               Name
             </label>
             <Field
@@ -56,11 +58,11 @@ const ContactForm = () => {
             <ErrorMessage
               name="name"
               component="span"
-              className={styles.errorMessage}
+              className={styles.error}
             />
           </div>
           <div className={styles.formItem}>
-            <label className={styles.formItemLabel} htmlFor={numberFieldId}>
+            <label className={styles.label} htmlFor={numberFieldId}>
               Number
             </label>
             <MaskedInput
@@ -88,7 +90,7 @@ const ContactForm = () => {
             <ErrorMessage
               name="number"
               component="span"
-              className={styles.errorMessage}
+              className={styles.error}
             />
           </div>
           <button className={styles.btn} type="submit">

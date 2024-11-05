@@ -3,7 +3,6 @@ import styles from "./SearchBox.module.css";
 import { useId } from "react";
 import { setFilters } from "../../redux/filters/slice";
 import { selectFilters } from "../../redux/filters/selectors";
-// import { selectFilters } from "../../redux/contacts/slice";
 
 const SearchBox = () => {
   // Підписуємося на значення фільтру зі стору

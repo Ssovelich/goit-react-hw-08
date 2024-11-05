@@ -1,0 +1,37 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userName {
+  font-weight: 700;
+  color: black;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #56382d;
+  margin: 0 auto;
+  height: 40px;
+  width: 100px;
+  border: 1px solid #56382d;
+  border-radius: 4px;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 18px;
+}
+.btn:hover {
+  background-color: #56382d86;
+}
+
+.wrapper {
+  display: flex;
+  gap: 10px;
+  margin-right: 50px;
+}
+
+.username {
+  font-weight: 700;
+  color: black;
+}

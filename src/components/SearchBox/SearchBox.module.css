@@ -21,6 +21,7 @@
   padding-left: 8px;
   font-weight: 300;
   font-size: 18px;
+  outline: transparent;
 }
 .searchInput:hover {
   border: 2px solid #a95f4d;

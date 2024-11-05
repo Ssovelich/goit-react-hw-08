@@ -5,6 +5,9 @@
   font-weight: 700;
   color: #44bff3;
 }
+.link:hover {
+  color: #8685859d;
+}
 
 .link.active {
   color: red;
