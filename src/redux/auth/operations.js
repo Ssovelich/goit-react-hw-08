@@ -6,11 +6,11 @@ const contactsInstance = axios.create({
 });
 // Утиліта для додавання JWT
 const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  contactsInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 // Утиліта для видалення JWT
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = "";
+  contactsInstance.defaults.headers.common.Authorization = "";
 };
 // POST @ /users/signup
 // body: { name, email, password }
