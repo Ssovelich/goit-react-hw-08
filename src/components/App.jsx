@@ -3,9 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../redux/contacts/operations";
+// import { fetchContacts } from "../redux/contacts/operations";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { PrivateRoute } from "./PrivateRoute";
+import { refreshUser } from "../redux/auth/operations";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
@@ -19,7 +20,7 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (

@@ -17,7 +17,9 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values))
+    dispatch(logIn(values));
+    console
+      .log(values)
       .unwrap()
       .then(() => {
         console.log("login success");
@@ -26,7 +28,6 @@ const LoginForm = () => {
         console.log("login error");
       });
     actions.resetForm();
-    console.log(dispatch);
   };
 
   return (

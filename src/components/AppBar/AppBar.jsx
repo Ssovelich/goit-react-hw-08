@@ -7,7 +7,7 @@ import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
+
   return (
     <header className={styles.header}>
       <Navigation />

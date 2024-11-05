@@ -1,5 +1,5 @@
 import { ErrorMessage, Form, Field, Formik } from "formik";
-import styles from "./RegisterForm.module.css";
+import styles from "./RegistrationForm.module.css";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
@@ -22,6 +22,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
+    console.log(values);
     actions.resetForm();
   };
 
