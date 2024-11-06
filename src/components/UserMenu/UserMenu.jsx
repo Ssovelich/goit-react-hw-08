@@ -9,7 +9,7 @@ export const UserMenu = () => {
 
   return (
     <div className={styles.wrap}>
-      <p className={styles.username}>Welcome, {user.name} </p>
+      <p className={styles.userName}>Welcome, {user.name} </p>
       <button
         className={styles.btn}
         type="button"

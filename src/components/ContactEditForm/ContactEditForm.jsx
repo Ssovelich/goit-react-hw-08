@@ -15,8 +15,8 @@ const ContsctSchema = Yup.object().shape({
     .required("Required"),
   number: Yup.string()
     .matches(
-      /^\d{3}-\d{2}-\d{2}$/,
-      "Phone number must be in the format 777-77-77"
+      /^\+\d{2} \d{3} \d{3}-\d{2}-\d{2}$/,
+      "Phone number must be in the format +38 077 777-77-77"
     )
     .required("Required"),
 });
@@ -70,10 +70,28 @@ const ContactEditForm = ({ id, name, number }) => {
               Number
             </label>
             <MaskedInput
-              mask={[/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/]}
+              mask={[
+                "+",
+                /\d/,
+                /\d/,
+                " ",
+                /\d/,
+                /\d/,
+                /\d/,
+                " ",
+                /\d/,
+                /\d/,
+                /\d/,
+                "-",
+                /\d/,
+                /\d/,
+                "-",
+                /\d/,
+                /\d/,
+              ]}
               value={values.number}
               onChange={(event) => setFieldValue("number", event.target.value)}
-              placeholder="777-77-77"
+              placeholder="+38 077 777-77-77"
               className={styles.field}
               name="number"
               id={numberFieldId}

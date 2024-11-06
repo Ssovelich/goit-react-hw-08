@@ -5,7 +5,9 @@
 }
 .userName {
   font-weight: 700;
-  color: black;
+  font-size: 20px;
+  color: #655247;
+  margin-right: 15px;
 }
 .btn {
   display: flex;

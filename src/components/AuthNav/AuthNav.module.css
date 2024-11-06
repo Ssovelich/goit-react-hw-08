@@ -3,11 +3,12 @@
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #44bff3;
+  color: #868585;
 }
 .link:hover {
-  color: #8685859d;
+  color: #a27f64;
+  text-decoration: underline;
 }
 .link.active {
-  color: red;
+  color: #655247;
 }

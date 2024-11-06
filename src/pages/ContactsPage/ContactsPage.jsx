@@ -38,7 +38,7 @@ const ContactsPage = () => {
         <ContactEditForm {...curetnContact} />
       )}
       <SearchBox />
-      {isLoading && <Loader />}
+      {isLoading && !error && <Loader />}
       {error && (
         <p>
           Oops, some error occured &quot;{error}&quot;. Please, try again later
