@@ -7,11 +7,12 @@ import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 // import { deleteContact } from "../../redux/contacts/operations";
 import Modal from "../Modal/Modal";
-import { useState } from "react";
-// import { selectOpenModal } from "../../redux/contacts/selectors";
 // import { useState } from "react";
+// import { selectOpenModal } from "../../redux/contacts/selectors";
+import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { toastOptions } from "../../utils/toastStyles";
+// import { selectOpenModal } from "../../redux/contacts/selectors";
 
 const Contact = ({ name, number, id, contact }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Contact = ({ name, number, id, contact }) => {
   // const isOpenModal = useSelector(selectOpenModal);
 
   // const handleDelete = () => {
-  //   dispatch(openModal(contact.id));
+  //   dispatch(openModal(id));
   // };
 
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -28,8 +29,14 @@ const Contact = ({ name, number, id, contact }) => {
   const onOpenModal = () => {
     setIsOpenModal(true);
   };
-  const onCloselModal = () => {
+  const onCloseModal = () => {
     setIsOpenModal(false);
+  };
+
+  const onBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onCloseModal();
+    }
   };
 
   // const onDeleteContact = (id) => {
@@ -52,10 +59,6 @@ const Contact = ({ name, number, id, contact }) => {
       });
   };
 
-  // const handleDelete = () => {
-  //   dispatch(openModal(contact.id));
-  // };
-
   return (
     <>
       <li className={styles.contactListItem}>
@@ -74,12 +77,7 @@ const Contact = ({ name, number, id, contact }) => {
         <button className={styles.btnDel} onClick={onOpenModal}>
           <MdDelete size={25} />
         </button>
-        {/* <button
-          className={styles.btnDel}
-          onClick={() => {
-            onDeleteContact(id);
-          }}
-        >
+        {/* <button className={styles.btnDel} onClick={handleDelete} id={id}>
           <MdDelete size={25} />
         </button> */}
         <button
@@ -91,7 +89,18 @@ const Contact = ({ name, number, id, contact }) => {
           <CiEdit size={25} />
         </button>
         <Toaster toastOptions={toastOptions} />
-        {isOpenModal && <Modal onCloselModal={onCloselModal} id={id} />}
+        {/* <Modal
+          isOpen={isOpenModal}
+          onRequestClose={handleCloseModal}
+          onConfirm={confirmDelete}
+        /> */}
+        {isOpenModal && (
+          <Modal
+            onCloseModal={onCloseModal}
+            id={id}
+            onBackdropClick={onBackdropClick}
+          />
+        )}
       </li>
     </>
   );

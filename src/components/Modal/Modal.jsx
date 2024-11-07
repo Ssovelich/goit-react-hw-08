@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { toastOptions } from "../../utils/toastStyles";
 
-const Modal = ({ onCloselModal, id }) => {
+const Modal = ({ onCloseModal, id, onBackdropClick }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (id) => {
@@ -18,11 +18,11 @@ const Modal = ({ onCloselModal, id }) => {
   };
 
   return (
-    <div className={styles.backdrop}>
+    <div onClick={onBackdropClick} className={styles.backdrop}>
       <div className={styles.modal}>
         <p className={styles.text}>Do you want to delete the contact?</p>
         <div className={styles.wrapBtn}>
-          <button onClick={onCloselModal} className={styles.btn} type="button">
+          <button onClick={onCloseModal} className={styles.btn} type="button">
             No
           </button>
           <button
