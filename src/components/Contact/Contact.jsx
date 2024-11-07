@@ -28,9 +28,11 @@ const Contact = ({ name, number, id, contact }) => {
 
   const onOpenModal = () => {
     setIsOpenModal(true);
+    document.body.style.overflow = "hidden";
   };
   const onCloseModal = () => {
     setIsOpenModal(false);
+    document.body.style.overflow = "auto";
   };
 
   const onBackdropClick = (event) => {
