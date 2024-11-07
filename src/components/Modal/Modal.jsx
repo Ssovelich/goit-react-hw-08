@@ -1,8 +1,7 @@
 import styles from "./Modal.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
+import toast from "react-hot-toast";
 
 const Modal = ({ onCloseModal, id, onBackdropClick }) => {
   const dispatch = useDispatch();
@@ -14,6 +13,7 @@ const Modal = ({ onCloseModal, id, onBackdropClick }) => {
       .unwrap()
       .then(() => {
         toast.success("Contact is deleted successfully!");
+        onCloseModal();
       });
   };
 
@@ -35,7 +35,6 @@ const Modal = ({ onCloseModal, id, onBackdropClick }) => {
             Yes
           </button>
         </div>
-        <Toaster toastOptions={toastOptions} />
       </div>
     </div>
   );

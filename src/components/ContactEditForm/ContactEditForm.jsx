@@ -7,8 +7,7 @@ import { editContact } from "../../redux/contacts/operations";
 import { setCurentContact } from "../../redux/contacts/slice";
 import { IoMdClose } from "react-icons/io";
 import { ContsctSchema } from "../../utils/schemas";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
+import toast from "react-hot-toast";
 
 const ContactEditForm = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ const ContactEditForm = ({ id, name, number }) => {
     dispatch(editContact({ ...values, id }))
       .unwrap()
       .then(() => {
-        toast.success("Contact success changed!");
+        toast.success("Contact is edited successfully!");
       });
 
     actions.resetForm();
@@ -98,7 +97,6 @@ const ContactEditForm = ({ id, name, number }) => {
           <button className={styles.btn} type="submit">
             Save contact
           </button>
-          <Toaster toastOptions={toastOptions} />
         </Form>
       )}
     </Formik>

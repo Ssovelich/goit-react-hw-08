@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { PrivateRoute } from "./PrivateRoute";
 import { refreshUser } from "../redux/auth/operations";
+import { Toaster } from "react-hot-toast";
+import { toastOptions } from "../utils/toastStyles";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegistrationPage = lazy(() =>
@@ -51,6 +53,7 @@ function App() {
           }
         />
       </Routes>
+      <Toaster toastOptions={toastOptions} />
     </Layout>
   );
 }

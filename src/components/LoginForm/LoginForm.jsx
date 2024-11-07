@@ -3,8 +3,7 @@ import styles from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import { LoginSchema } from "../../utils/schemas";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
+import toast from "react-hot-toast";
 
 const initialValues = { email: "", password: "" };
 
@@ -67,7 +66,6 @@ const LoginForm = () => {
         <button className={styles.btn} type="submit">
           Log In
         </button>
-        <Toaster toastOptions={toastOptions} />
       </Form>
     </Formik>
   );

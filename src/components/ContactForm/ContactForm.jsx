@@ -5,8 +5,7 @@ import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import { ContsctSchema } from "../../utils/schemas";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
+import toast from "react-hot-toast";
 
 const initialValues = {
   name: "",
@@ -94,7 +93,6 @@ const ContactForm = () => {
           <button className={styles.btn} type="submit">
             Add contact
           </button>
-          <Toaster toastOptions={toastOptions} />
         </Form>
       )}
     </Formik>

@@ -3,8 +3,7 @@ import styles from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { RegistrationSchema } from "../../utils/schemas";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
+import toast from "react-hot-toast";
 
 const initialValues = { name: "", email: "", password: "" };
 
@@ -86,7 +85,6 @@ const RegistrationForm = () => {
         <button className={styles.btn} type="submit">
           Register
         </button>
-        <Toaster toastOptions={toastOptions} />
       </Form>
     </Formik>
   );

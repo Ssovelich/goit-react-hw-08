@@ -10,8 +10,6 @@ import Modal from "../Modal/Modal";
 // import { useState } from "react";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { toastOptions } from "../../utils/toastStyles";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
 
 const Contact = ({ name, number, id, contact }) => {
@@ -54,11 +52,7 @@ const Contact = ({ name, number, id, contact }) => {
   const onEditContact = (id) => {
     const action = setCurentContact({ id, name, number });
 
-    dispatch(action)
-      .unwrap()
-      .then(() => {
-        toast.success("Contact is edited successfully!");
-      });
+    dispatch(action);
   };
 
   return (
@@ -90,7 +84,6 @@ const Contact = ({ name, number, id, contact }) => {
         >
           <CiEdit size={25} />
         </button>
-        <Toaster toastOptions={toastOptions} />
         {/* <Modal
           isOpen={isOpenModal}
           onRequestClose={handleCloseModal}
