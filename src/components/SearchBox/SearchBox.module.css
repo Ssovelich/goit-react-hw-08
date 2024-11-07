@@ -8,6 +8,7 @@
   margin: 0 auto 20px auto;
   background: #a27f64;
   color: #ffffff;
+  box-shadow: 4px 4px 6px 2px #655247;
 }
 .searchLabel {
   font-weight: 400;

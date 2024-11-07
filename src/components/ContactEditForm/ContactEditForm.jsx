@@ -1,4 +1,3 @@
-import * as Yup from "yup";
 import { useId } from "react";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -7,19 +6,9 @@ import { useDispatch } from "react-redux";
 import { editContact } from "../../redux/contacts/operations";
 import { setCurentContact } from "../../redux/contacts/slice";
 import { IoMdClose } from "react-icons/io";
-
-const ContsctSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  number: Yup.string()
-    .matches(
-      /^\+\d{2} \d{3} \d{3}-\d{2}-\d{2}$/,
-      "Phone number must be in the format +38 077 777-77-77"
-    )
-    .required("Required"),
-});
+import { ContsctSchema } from "../../utils/schemas";
+import toast, { Toaster } from "react-hot-toast";
+import { toastOptions } from "../../utils/toastStyles";
 
 const ContactEditForm = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -28,7 +17,11 @@ const ContactEditForm = ({ id, name, number }) => {
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ ...values, id }));
+    dispatch(editContact({ ...values, id }))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact success changed!");
+      });
 
     actions.resetForm();
   };
@@ -105,6 +98,7 @@ const ContactEditForm = ({ id, name, number }) => {
           <button className={styles.btn} type="submit">
             Save contact
           </button>
+          <Toaster toastOptions={toastOptions} />
         </Form>
       )}
     </Formik>

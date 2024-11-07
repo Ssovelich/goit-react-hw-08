@@ -9,6 +9,7 @@
   margin: 0 auto 20px auto;
   background: #a27f64;
   color: #ffffff;
+  box-shadow: 4px 4px 6px 2px #655247;
 }
 .btnClose {
   position: absolute;
@@ -24,7 +25,7 @@
   color: #ffffff;
   border: solid 1px #ffffff;
   border-radius: 50px;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 .btnClose:hover {
   background-color: #ffffff;
@@ -65,6 +66,7 @@
   color: #ffffff;
   font-weight: 300;
   font-size: 18px;
+  transition: 0.3s;
 }
 .btn:hover {
   background-color: #56382d86;

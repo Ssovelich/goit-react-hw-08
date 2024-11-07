@@ -8,6 +8,7 @@
   margin: 20px auto;
   background: #adc177;
   color: #ffffff;
+  box-shadow: 4px 4px 6px 2px #655247;
 }
 .formItem {
   display: flex;

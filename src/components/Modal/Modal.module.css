@@ -6,20 +6,44 @@
 }
 
 .modal {
-  background-image: linear-gradient(
-    to right,
-    #9eefe1 0%,
-    #4830f0 51%,
-    #9eefe1 100%
-  );
+  background: #adc177;
   width: 400px;
-  height: 400px;
+  /* height: 150px; */
   overflow: auto;
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: #56453e;
+}
+.text {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.wrapBtn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.btn {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background-color: #655247;
+  /* margin: 0 auto; */
+  height: 40px;
+  width: 150px;
+  border: 1px solid #655247;
+  border-radius: 4px;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 18px;
+  transition: 0.2s;
+}
+.btn:hover {
+  background-color: #56382d86;
 }

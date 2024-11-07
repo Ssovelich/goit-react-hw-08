@@ -10,8 +10,6 @@ const SearchBox = () => {
   // Функція відправки команди
   const dispatch = useDispatch();
 
-  // console.log(filters);
-
   const searchFieldId = useId();
 
   return (
@@ -23,6 +21,7 @@ const SearchBox = () => {
         className={styles.searchInput}
         type="text"
         name="search"
+        placeholder="Write something..."
         value={filters}
         onChange={(event) => {
           const action = setFilters(event.target.value);

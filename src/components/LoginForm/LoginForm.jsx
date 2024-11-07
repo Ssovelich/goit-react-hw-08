@@ -1,30 +1,24 @@
 import { ErrorMessage, Form, Field, Formik } from "formik";
 import styles from "./LoginForm.module.css";
-import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
+import { LoginSchema } from "../../utils/schemas";
+import toast, { Toaster } from "react-hot-toast";
+import { toastOptions } from "../../utils/toastStyles";
 
 const initialValues = { email: "", password: "" };
-
-const FeedbackSchema = Yup.object().shape({
-  email: Yup.string().email().required("Required"),
-  password: Yup.string()
-    .min(8, "The password must consist of at least 8 characters!")
-    .required("Required"),
-});
 
 const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values));
-    console
+    dispatch(logIn(values))
       .unwrap()
       .then(() => {
-        console.log("login success");
+        toast.success("Login success");
       })
       .catch(() => {
-        console.log("login error");
+        toast.error("Incorrect email or password");
       });
     actions.resetForm();
   };
@@ -33,7 +27,7 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
+      validationSchema={LoginSchema}
     >
       <Form className={styles.form}>
         <div className={styles.formItem}>
@@ -42,9 +36,10 @@ const LoginForm = () => {
           </label>
           <Field
             className={styles.field}
-            type="email"
+            type="text"
             name="email"
             id="email"
+            placeholder="example@gmail.com"
           />
           <ErrorMessage
             className={styles.error}
@@ -61,6 +56,7 @@ const LoginForm = () => {
             type="password"
             name="password"
             id="password"
+            placeholder="Enter your password"
           />
           <ErrorMessage
             className={styles.error}
@@ -71,6 +67,7 @@ const LoginForm = () => {
         <button className={styles.btn} type="submit">
           Log In
         </button>
+        <Toaster toastOptions={toastOptions} />
       </Form>
     </Formik>
   );

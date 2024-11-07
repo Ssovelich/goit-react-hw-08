@@ -1,28 +1,17 @@
-import * as Yup from "yup";
 import { useId } from "react";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import { ContsctSchema } from "../../utils/schemas";
+import toast, { Toaster } from "react-hot-toast";
+import { toastOptions } from "../../utils/toastStyles";
 
 const initialValues = {
   name: "",
   number: "",
 };
-
-const ContsctSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  number: Yup.string()
-    .matches(
-      /^\+\d{2} \d{3} \d{3}-\d{2}-\d{2}$/,
-      "Phone number must be in the format +38 077 777-77-77"
-    )
-    .required("Required"),
-});
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -31,7 +20,11 @@ const ContactForm = () => {
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ ...values }));
+    dispatch(addContact({ ...values }))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact success added!");
+      });
 
     actions.resetForm();
   };
@@ -101,6 +94,7 @@ const ContactForm = () => {
           <button className={styles.btn} type="submit">
             Add contact
           </button>
+          <Toaster toastOptions={toastOptions} />
         </Form>
       )}
     </Formik>

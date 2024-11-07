@@ -70,7 +70,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // Якщо маркер є, додайте його до HTTP-заголовка та виконайте запит
       setAuthHeader(persistedToken);
-      const response = await contactsInstance.get("/users/me");
+      const response = await contactsInstance.get("/users/current");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

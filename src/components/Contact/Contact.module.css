@@ -10,6 +10,7 @@
   height: 100px;
   background: #56453e;
   color: #ffffff;
+  box-shadow: 4px 4px 6px 4px #a27f64;
 }
 .icon {
   vertical-align: middle;
