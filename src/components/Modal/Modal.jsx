@@ -13,16 +13,14 @@ const Modal = ({ onCloselModal, id }) => {
     dispatch(action)
       .unwrap()
       .then(() => {
-        toast.success("Contact success deleted!");
+        toast.success("Contact is deleted successfully!");
       });
   };
 
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <p className={styles.text}>
-          Do you confirm the deletion of the contact?
-        </p>
+        <p className={styles.text}>Do you want to delete the contact?</p>
         <div className={styles.wrapBtn}>
           <button onClick={onCloselModal} className={styles.btn} type="button">
             No

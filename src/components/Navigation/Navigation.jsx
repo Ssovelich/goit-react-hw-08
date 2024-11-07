@@ -13,9 +13,6 @@ const buildStylesClasses = ({ isActive }) =>
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const contacts = useSelector(selectContacts);
-  console.log(contacts.length);
-  // const totalContacts = length.contacts;
-  // console.log(totalContacts);
 
   return (
     <nav>
@@ -25,7 +22,8 @@ export const Navigation = () => {
       {isLoggedIn && (
         <NavLink className={buildStylesClasses} to="/contacts">
           <IoIosContacts size={25} />
-          Contacts: {contacts.length}
+          Contacts:&nbsp;
+          {contacts?.length}
         </NavLink>
       )}
     </nav>

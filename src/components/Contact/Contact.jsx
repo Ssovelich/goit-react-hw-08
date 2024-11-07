@@ -48,7 +48,7 @@ const Contact = ({ name, number, id, contact }) => {
     dispatch(action)
       .unwrap()
       .then(() => {
-        toast.success("Contact success deleted!");
+        toast.success("Contact is edited successfully!");
       });
   };
 

@@ -23,7 +23,7 @@ const ContactForm = () => {
     dispatch(addContact({ ...values }))
       .unwrap()
       .then(() => {
-        toast.success("Contact success added!");
+        toast.success("Contact is added successfully!");
       });
 
     actions.resetForm();

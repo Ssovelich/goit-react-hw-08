@@ -15,7 +15,7 @@ const LoginForm = () => {
     dispatch(logIn(values))
       .unwrap()
       .then(() => {
-        toast.success("Login success");
+        toast.success("You have successfully logged in");
       })
       .catch(() => {
         toast.error("Incorrect email or password");

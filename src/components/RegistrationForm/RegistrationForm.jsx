@@ -15,11 +15,11 @@ const RegistrationForm = () => {
     dispatch(register(values))
       .unwrap()
       .then(() => {
-        toast.success("Success register!");
+        toast.success("Your account has been created!");
       })
       .catch((error) => {
         if (error === "Request failed with status code 400") {
-          toast.error("User with this email already exists");
+          toast.error("User with this email is already exists");
         }
       });
     actions.resetForm();
