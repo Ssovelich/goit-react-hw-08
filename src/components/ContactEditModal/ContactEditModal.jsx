@@ -1,7 +1,7 @@
 import { IoMdClose } from "react-icons/io";
 import { ContsctSchema } from "../../utils/schemas";
 import styles from "./ContactEditModal.module.css";
-import { useId } from "react";
+import { useEffect, useId } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -31,6 +31,22 @@ const ContactEditModal = ({
 
     actions.resetForm();
   };
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.code === "Escape") {
+        onCloseEditModal();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "auto";
+    };
+  }, [onCloseEditModal]);
 
   return (
     <div onClick={onBackdropClick} className={styles.backdrop}>

@@ -2,6 +2,7 @@ import styles from "./Modal.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const Modal = ({ onCloseModal, id, onBackdropClick }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,22 @@ const Modal = ({ onCloseModal, id, onBackdropClick }) => {
         onCloseModal();
       });
   };
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.code === "Escape") {
+        onCloseModal();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "auto";
+    };
+  }, [onCloseModal]);
 
   return (
     <div onClick={onBackdropClick} className={styles.backdrop}>
