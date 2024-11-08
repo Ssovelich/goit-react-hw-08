@@ -9,6 +9,7 @@
   color: #655247;
   margin-right: 15px;
 }
+
 .btn {
   display: flex;
   justify-content: center;
@@ -22,10 +23,11 @@
   color: #ffffff;
   font-weight: 300;
   font-size: 18px;
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 .btn:hover {
   background-color: #56382d86;
+  border-radius: 50px;
 }
 
 .wrapper {

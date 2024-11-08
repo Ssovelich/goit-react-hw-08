@@ -12,10 +12,11 @@ const ContactList = () => {
         {visibleContacts?.map((contact) => {
           return (
             <Contact
-              id={contact.id}
+              contact={contact}
               key={contact.id}
-              name={contact.name}
-              number={contact.number}
+              // id={contact.id}
+              // name={contact.name}
+              // number={contact.number}
             />
           );
         })}

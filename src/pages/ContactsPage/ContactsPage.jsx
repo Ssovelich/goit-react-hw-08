@@ -28,6 +28,7 @@ const ContactsPage = () => {
         style={{
           textAlign: "center",
           color: "#655247",
+          textShadow: "0px 0px 10px #655247",
         }}
       >
         Phonebook

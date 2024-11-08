@@ -1,19 +1,20 @@
 import styles from "./Contact.module.css";
 import { FaUser } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { setCurentContact } from "../../redux/contacts/slice";
+// import { useDispatch } from "react-redux";
+// import { setCurentContact } from "../../redux/contacts/slice";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 // import { deleteContact } from "../../redux/contacts/operations";
 import Modal from "../Modal/Modal";
+import ContactEditModal from "../ContactEditModal/ContactEditModal";
 // import { useState } from "react";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
 import { useState } from "react";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
 
-const Contact = ({ name, number, id, contact }) => {
-  const dispatch = useDispatch();
+const Contact = ({ contact }) => {
+  // const dispatch = useDispatch();
 
   // const isOpenModal = useSelector((state) => state.contacts.isOpenModal);
   // const isOpenModal = useSelector(selectOpenModal);
@@ -36,7 +37,18 @@ const Contact = ({ name, number, id, contact }) => {
   const onBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
       onCloseModal();
+      onCloseEditModal();
     }
+  };
+
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const onOpenEditModal = () => {
+    setIsOpenEditModal(true);
+    document.body.style.overflow = "hidden";
+  };
+  const onCloseEditModal = () => {
+    setIsOpenEditModal(false);
+    document.body.style.overflow = "auto";
   };
 
   // const onDeleteContact = (id) => {
@@ -49,11 +61,11 @@ const Contact = ({ name, number, id, contact }) => {
   //     });
   // };
 
-  const onEditContact = (id) => {
-    const action = setCurentContact({ id, name, number });
+  // const onEditContact = (id) => {
+  //   const action = setCurentContact({ id, name, number });
 
-    dispatch(action);
-  };
+  //   dispatch(action);
+  // };
 
   return (
     <>
@@ -62,12 +74,12 @@ const Contact = ({ name, number, id, contact }) => {
           <p className={styles.name}>
             <FaUser className={styles.icon} />
             &nbsp;
-            {name}
+            {contact.name}
           </p>
           <p className={styles.number}>
             <FaPhone className={styles.icon} />
             &nbsp;
-            {number}
+            {contact.number}
           </p>
         </div>
         <button className={styles.btnDel} onClick={onOpenModal}>
@@ -78,12 +90,20 @@ const Contact = ({ name, number, id, contact }) => {
         </button> */}
         <button
           className={styles.btnEdit}
+          onClick={onOpenEditModal}
+
+          // contact={contact}
+        >
+          <CiEdit size={25} />
+        </button>
+        {/* <button
+          className={styles.btnEdit}
           onClick={() => {
             onEditContact(id, contact);
           }}
         >
           <CiEdit size={25} />
-        </button>
+        </button> */}
         {/* <Modal
           isOpen={isOpenModal}
           onRequestClose={handleCloseModal}
@@ -92,7 +112,16 @@ const Contact = ({ name, number, id, contact }) => {
         {isOpenModal && (
           <Modal
             onCloseModal={onCloseModal}
-            id={id}
+            id={contact.id}
+            onBackdropClick={onBackdropClick}
+          />
+        )}
+        {isOpenEditModal && (
+          <ContactEditModal
+            onCloseEditModal={onCloseEditModal}
+            id={contact.id}
+            name={contact.name}
+            number={contact.number}
             onBackdropClick={onBackdropClick}
           />
         )}

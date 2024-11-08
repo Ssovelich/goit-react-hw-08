@@ -3,12 +3,12 @@
   z-index: 10;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
 }
 
 .modal {
   background: #adc177;
   width: 400px;
-  /* height: 150px; */
   overflow: auto;
   padding: 20px;
   border-radius: 8px;
@@ -30,11 +30,7 @@
   gap: 20px;
 }
 .btn {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   background-color: #655247;
-  /* margin: 0 auto; */
   height: 40px;
   width: 150px;
   border: 1px solid #655247;
@@ -42,8 +38,9 @@
   color: #ffffff;
   font-weight: 300;
   font-size: 18px;
-  transition: 0.2s;
+  transition: all 0.3s ease-in-out;
 }
 .btn:hover {
   background-color: #56382d86;
+  border-radius: 50px;
 }

@@ -15,11 +15,14 @@ const LoginForm = () => {
       .unwrap()
       .then(() => {
         toast.success("You have successfully logged in");
+        actions.resetForm();
       })
+
       .catch(() => {
         toast.error("Incorrect email or password");
       });
-    actions.resetForm();
+
+    // actions.resetForm();
   };
 
   return (
