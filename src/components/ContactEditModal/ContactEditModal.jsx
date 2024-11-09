@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import MaskedInput from "react-text-mask";
 import { IoMdClose } from "react-icons/io";
+import { IoSaveOutline } from "react-icons/io5";
 
 import { ContsctSchema } from "../../utils/schemas";
 import { apiEditContact } from "../../redux/contacts/operations";
@@ -121,7 +122,8 @@ const ContactEditModal = ({
               />
             </div>
             <button className={styles.btn} type="submit">
-              Save contact
+              <IoSaveOutline size={18} />
+              &nbsp; Save contact
             </button>
           </Form>
         )}
