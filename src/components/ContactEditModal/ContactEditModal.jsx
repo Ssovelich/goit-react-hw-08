@@ -26,10 +26,10 @@ const ContactEditModal = ({
       .unwrap()
       .then(() => {
         toast.success("Contact is edited successfully!");
-        onCloseEditModal();
       });
 
     actions.resetForm();
+    onCloseEditModal();
   };
 
   useEffect(() => {
