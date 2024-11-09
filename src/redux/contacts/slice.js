@@ -8,15 +8,14 @@ import {
 
 const INITIAL_STATE = {
   items: null,
-  loading: false,
+  isLoading: false,
   error: false,
   isOpenModal: false,
   contactDelete: null,
-  isEdit: false,
+  isOpenEditModal: false,
   editContact: null,
 };
 
-// Створюємо slice
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: INITIAL_STATE,
@@ -36,57 +35,57 @@ const contactsSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(fetchContacts.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = false;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.items = action.payload;
       })
       .addCase(fetchContacts.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(addContact.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = false;
       })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.items.push(action.payload);
       })
       .addCase(addContact.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(deleteContact.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = false;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.items = state.items.filter(
           (item) => item.id !== action.payload.id
         );
         state.isOpenModal = false;
       })
       .addCase(deleteContact.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(editContact.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = false;
       })
       .addCase(editContact.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.items = state.items.map((item) =>
           item.id !== action.payload.id ? item : action.payload
         );
         state.curentContact = null;
       })
       .addCase(editContact.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload;
       }),
 });
