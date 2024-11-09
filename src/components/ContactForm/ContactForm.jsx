@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
 import { apiAddContact } from "../../redux/contacts/operations";
-import { ContsctSchema } from "../../utils/schemas";
+import { ContactSchema } from "../../utils/schemas";
 
 const initialValues = {
   name: "",
@@ -33,7 +33,7 @@ const ContactForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={ContsctSchema}
+      validationSchema={ContactSchema}
     >
       {({ values, setFieldValue }) => (
         <Form className={styles.form}>

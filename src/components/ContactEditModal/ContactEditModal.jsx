@@ -7,7 +7,7 @@ import MaskedInput from "react-text-mask";
 import { IoMdClose } from "react-icons/io";
 import { IoSaveOutline } from "react-icons/io5";
 
-import { ContsctSchema } from "../../utils/schemas";
+import { ContactSchema } from "../../utils/schemas";
 import { apiEditContact } from "../../redux/contacts/operations";
 
 const ContactEditModal = ({
@@ -54,7 +54,7 @@ const ContactEditModal = ({
       <Formik
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
-        validationSchema={ContsctSchema}
+        validationSchema={ContactSchema}
       >
         {({ values, setFieldValue }) => (
           <Form className={styles.modalForm}>

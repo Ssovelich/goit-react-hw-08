@@ -28,9 +28,13 @@
   font-weight: 300;
   font-size: 18px;
   outline: transparent;
+  transition: all 0.3s ease-in-out;
 }
 .field:hover {
   border: 2px solid #655247;
+}
+.field:focus {
+  border-radius: 50px;
 }
 .btn {
   display: flex;
@@ -45,9 +49,11 @@
   color: #ffffff;
   font-weight: 300;
   font-size: 18px;
+  transition: all 0.3s ease-in-out;
 }
 .btn:hover {
   background-color: #56382d86;
+  border-radius: 50px;
 }
 .error {
   color: #92000a;

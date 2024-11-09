@@ -7,7 +7,7 @@ const HomePage = () => {
       <DocumentTitle>Home</DocumentTitle>
 
       <div>
-        <h1 className={styles.title}>Phonebook welcome page🎉</h1>
+        <h1 className={styles.title}>Welcome to the Phonebook App 🎉</h1>
       </div>
     </div>
   );

@@ -23,7 +23,11 @@
   font-weight: 300;
   font-size: 18px;
   outline: transparent;
+  transition: all 0.3s ease-in-out;
 }
 .searchInput:hover {
   border: 2px solid #655247;
+}
+.searchInput:focus {
+  border-radius: 50px;
 }

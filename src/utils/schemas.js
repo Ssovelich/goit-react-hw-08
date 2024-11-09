@@ -28,7 +28,7 @@ export const LoginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-export const ContsctSchema = Yup.object().shape({
+export const ContactSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(20, "Too Long!")

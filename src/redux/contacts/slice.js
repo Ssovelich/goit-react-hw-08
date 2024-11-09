@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { apiLogOut } from "../auth/operations";
 import {
   apiFetchContacts,
   apiAddContact,
@@ -10,8 +11,6 @@ const INITIAL_STATE = {
   items: null,
   isLoading: false,
   error: false,
-  contactDelete: null,
-  editContact: null,
 };
 
 const contactsSlice = createSlice({
@@ -85,9 +84,13 @@ const contactsSlice = createSlice({
       .addCase(apiEditContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(apiLogOut.fulfilled, (state) => {
+        state.items = [];
+        state.isLoading = false;
+        state.error = null;
       }),
 });
 
-export const { openModal, closeModal } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 export const { setCurentContact } = contactsSlice.actions;
