@@ -1,9 +1,10 @@
-import { ErrorMessage, Form, Field, Formik } from "formik";
 import styles from "./RegistrationForm.module.css";
+import { ErrorMessage, Form, Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
-import { RegistrationSchema } from "../../utils/schemas";
 import toast from "react-hot-toast";
+
+import { apiRegister } from "../../redux/auth/operations";
+import { RegistrationSchema } from "../../utils/schemas";
 
 const initialValues = { name: "", email: "", password: "" };
 
@@ -11,7 +12,7 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values))
+    dispatch(apiRegister(values))
       .unwrap()
       .then(() => {
         toast.success("Your account has been created!");

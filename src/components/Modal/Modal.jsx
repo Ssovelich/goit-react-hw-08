@@ -1,14 +1,15 @@
 import styles from "./Modal.module.css";
-import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+
+import { apiDeleteContact } from "../../redux/contacts/operations";
 
 const Modal = ({ onCloseModal, contactId, onBackdropClick }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (contactId) => {
-    const action = deleteContact(contactId);
+    const action = apiDeleteContact(contactId);
 
     dispatch(action)
       .unwrap()

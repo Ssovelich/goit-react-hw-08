@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
+import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { IoHome } from "react-icons/io5";
 import { IoIosContacts } from "react-icons/io";
 import { useSelector } from "react-redux";
+
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { selectContacts } from "../../redux/contacts/selectors";
 

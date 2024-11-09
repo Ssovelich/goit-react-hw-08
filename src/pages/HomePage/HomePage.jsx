@@ -1,5 +1,5 @@
-import DocumentTitle from "../../components/DocumentTitle";
 import styles from "./HomePage.module.css";
+import DocumentTitle from "../../components/DocumentTitle";
 
 const HomePage = () => {
   return (

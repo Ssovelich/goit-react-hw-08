@@ -14,7 +14,7 @@ const clearAuthHeader = () => {
 };
 // POST @ /users/signup
 // body: { name, email, password }
-export const register = createAsyncThunk(
+export const apiRegister = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
@@ -29,7 +29,7 @@ export const register = createAsyncThunk(
 );
 // POST @ /users/login
 // body: { email, password }
-export const logIn = createAsyncThunk(
+export const apiLogIn = createAsyncThunk(
   "auth/login",
   async (credentials, thunkAPI) => {
     try {
@@ -44,18 +44,21 @@ export const logIn = createAsyncThunk(
 );
 // POST @ /users/logout
 // headers: Authorization: Bearer token
-export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-  try {
-    await contactsInstance.post("/users/logout");
-    // Після успішного виходу видаліть маркер із HTTP-заголовка
-    clearAuthHeader();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const apiLogOut = createAsyncThunk(
+  "auth/logout",
+  async (_, thunkAPI) => {
+    try {
+      await contactsInstance.post("/users/logout");
+      // Після успішного виходу видаліть маркер із HTTP-заголовка
+      clearAuthHeader();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 // GET @ /users/me
 // headers: Authorization: Bearer token
-export const refreshUser = createAsyncThunk(
+export const apiRefreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     // Читання токена зі стану через getState()

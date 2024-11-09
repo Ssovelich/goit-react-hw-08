@@ -1,11 +1,12 @@
+import styles from "./ContactForm.module.css";
 import { useId } from "react";
 import MaskedInput from "react-text-mask";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import styles from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-import { ContsctSchema } from "../../utils/schemas";
 import toast from "react-hot-toast";
+
+import { apiAddContact } from "../../redux/contacts/operations";
+import { ContsctSchema } from "../../utils/schemas";
 
 const initialValues = {
   name: "",
@@ -19,7 +20,7 @@ const ContactForm = () => {
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ ...values }))
+    dispatch(apiAddContact({ ...values }))
       .unwrap()
       .then(() => {
         toast.success("Contact is added successfully!");

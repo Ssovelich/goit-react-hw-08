@@ -1,9 +1,10 @@
-import { ErrorMessage, Form, Field, Formik } from "formik";
 import styles from "./LoginForm.module.css";
+import { ErrorMessage, Form, Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../redux/auth/operations";
-import { LoginSchema } from "../../utils/schemas";
 import toast from "react-hot-toast";
+
+import { apiLogIn } from "../../redux/auth/operations";
+import { LoginSchema } from "../../utils/schemas";
 
 const initialValues = { email: "", password: "" };
 
@@ -11,7 +12,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values))
+    dispatch(apiLogIn(values))
       .unwrap()
       .then(() => {
         toast.success("You have successfully logged in");
@@ -21,8 +22,6 @@ const LoginForm = () => {
       .catch(() => {
         toast.error("Incorrect email or password");
       });
-
-    // actions.resetForm();
   };
 
   return (

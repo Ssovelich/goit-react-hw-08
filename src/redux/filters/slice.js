@@ -4,7 +4,6 @@ const INITIAL_STATE = {
   filters: "",
 };
 
-// Створюємо slice
 const filtersSlice = createSlice({
   name: "filters",
   initialState: INITIAL_STATE,
@@ -15,7 +14,6 @@ const filtersSlice = createSlice({
   },
 });
 
-//Генеруємо reducer
 export const filterReducer = filtersSlice.reducer;
-//Генеруємо функцію команди
+
 export const { setFilters } = filtersSlice.actions;

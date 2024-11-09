@@ -1,13 +1,13 @@
 import { lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import { RestrictedRoute } from "./RestrictedRoute";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchContacts } from "../redux/contacts/operations";
+import { Toaster } from "react-hot-toast";
+
+import { RestrictedRoute } from "./RestrictedRoute";
+import Layout from "./Layout";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { PrivateRoute } from "./PrivateRoute";
-import { refreshUser } from "../redux/auth/operations";
-import { Toaster } from "react-hot-toast";
+import { apiRefreshUser } from "../redux/auth/operations";
 import { toastOptions } from "../utils/toastStyles";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
@@ -22,7 +22,7 @@ function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(apiRefreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (

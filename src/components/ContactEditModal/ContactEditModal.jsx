@@ -7,8 +7,7 @@ import MaskedInput from "react-text-mask";
 import { IoMdClose } from "react-icons/io";
 
 import { ContsctSchema } from "../../utils/schemas";
-import { editContact } from "../../redux/contacts/operations";
-// import { setCurentContact } from "../../redux/contacts/slice";
+import { apiEditContact } from "../../redux/contacts/operations";
 
 const ContactEditModal = ({
   onCloseEditModal,
@@ -23,7 +22,7 @@ const ContactEditModal = ({
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ ...values, contactId }))
+    dispatch(apiEditContact({ ...values, contactId }))
       .unwrap()
       .then(() => {
         toast.success("Contact is edited successfully!");
@@ -51,7 +50,6 @@ const ContactEditModal = ({
 
   return (
     <div onClick={onBackdropClick} className={styles.backdrop}>
-      {/* <div className={styles.modalForm}> */}
       <Formik
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
@@ -128,7 +126,6 @@ const ContactEditModal = ({
           </Form>
         )}
       </Formik>
-      {/* </div> */}
     </div>
   );
 };
