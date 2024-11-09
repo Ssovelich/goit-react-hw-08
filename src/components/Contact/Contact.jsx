@@ -8,40 +8,51 @@ import { MdDelete } from "react-icons/md";
 import Modal from "../Modal/Modal";
 import ContactEditModal from "../ContactEditModal/ContactEditModal";
 
-// import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModal, openModal } from "../../redux/contacts/slice";
 // import { setCurentContact } from "../../redux/contacts/slice";
 // import { deleteContact } from "../../redux/contacts/operations";
 // import { useState } from "react";
-// import { selectOpenModal } from "../../redux/contacts/selectors";
-// import { selectOpenModal } from "../../redux/contacts/selectors";
+import { selectOpenModal } from "../../redux/contacts/selectors";
 
 const Contact = ({ contact }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const isOpenModal = useSelector((state) => state.contacts.isOpenModal);
-  // const isOpenModal = useSelector(selectOpenModal);
+  // const isOpenModal = useSelector((state) => state.contactsData.isOpenModal);
+  const isOpenModal = useSelector(selectOpenModal);
 
-  // const handleDelete = () => {
-  //   dispatch(openModal(id));
-  // };
-
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const onOpenModal = () => {
-    setIsOpenModal(true);
-    document.body.style.overflow = "hidden";
+  const handleDelete = () => {
+    dispatch(openModal(contact.id));
   };
+
   const onCloseModal = () => {
-    setIsOpenModal(false);
-    document.body.style.overflow = "auto";
+    dispatch(closeModal());
   };
 
   const onBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      onCloseModal();
-      onCloseEditModal();
+      dispatch(closeModal());
+      dispatch(onCloseEditModal());
     }
   };
+
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+
+  // const onOpenModal = () => {
+  //   setIsOpenModal(true);
+  //   document.body.style.overflow = "hidden";
+  // };
+  // const onCloseModal = () => {
+  //   setIsOpenModal(false);
+  //   document.body.style.overflow = "auto";
+  // };
+
+  // const onBackdropClick = (event) => {
+  //   if (event.target === event.currentTarget) {
+  //     onCloseModal();
+  //     onCloseEditModal();
+  //   }
+  // };
 
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const onOpenEditModal = () => {
@@ -84,12 +95,16 @@ const Contact = ({ contact }) => {
             {contact.number}
           </p>
         </div>
-        <button className={styles.btnDel} onClick={onOpenModal}>
-          <MdDelete size={25} />
-        </button>
-        {/* <button className={styles.btnDel} onClick={handleDelete} id={id}>
+        {/* <button className={styles.btnDel} onClick={onOpenModal}>
           <MdDelete size={25} />
         </button> */}
+        <button
+          className={styles.btnDel}
+          onClick={handleDelete}
+          // id={contact.id}
+        >
+          <MdDelete size={25} />
+        </button>
         <button className={styles.btnEdit} onClick={onOpenEditModal}>
           <CiEdit size={25} />
         </button>
@@ -119,7 +134,7 @@ const Contact = ({ contact }) => {
             contactId={contact.id}
             name={contact.name}
             number={contact.number}
-            onBackdropClick={onBackdropClick}
+            // onBackdropClick={onBackdropClick}
           />
         )}
       </li>

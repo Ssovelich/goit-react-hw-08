@@ -5,7 +5,7 @@ export const selectContacts = (state) => state.contactsData.items;
 export const selectLoading = (state) => state.contactsData.loading;
 export const selectError = (state) => state.contactsData.error;
 export const selectCuretnContact = (state) => state.contactsData.curentContact;
-export const selectOpenModal = (state) => state.contacts.isOpenModal;
+export const selectOpenModal = (state) => state.contactsData.isOpenModal;
 
 // Мемоізований селектор
 export const selectFilteredContacts = createSelector(
