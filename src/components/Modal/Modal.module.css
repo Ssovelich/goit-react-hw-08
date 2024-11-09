@@ -21,6 +21,12 @@
   text-align: center;
   font-weight: 500;
   font-size: 20px;
+  margin-bottom: 15px;
+}
+.name {
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
   margin-bottom: 30px;
 }
 .wrapBtn {

@@ -39,7 +39,7 @@ const Modal = ({ onCloseModal, contactId, onBackdropClick, name }) => {
     <div onClick={onBackdropClick} className={styles.backdrop}>
       <div className={styles.modal}>
         <p className={styles.text}>Do you want to delete the contact:</p>
-        <p className={styles.text}>{name}?</p>
+        <p className={styles.name}>{name}?</p>
         <div className={styles.wrapBtn}>
           <button onClick={onCloseModal} className={styles.btn} type="button">
             No
