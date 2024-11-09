@@ -62,6 +62,7 @@ const Contact = ({ contact }) => {
           <Modal
             onCloseModal={onCloseModal}
             contactId={contact.id}
+            name={contact.name}
             onBackdropClick={onBackdropClick}
           />
         )}

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import { apiDeleteContact } from "../../redux/contacts/operations";
 
-const Modal = ({ onCloseModal, contactId, onBackdropClick }) => {
+const Modal = ({ onCloseModal, contactId, onBackdropClick, name }) => {
   const dispatch = useDispatch();
 
   const onDeleteContact = (contactId) => {
@@ -38,7 +38,8 @@ const Modal = ({ onCloseModal, contactId, onBackdropClick }) => {
   return (
     <div onClick={onBackdropClick} className={styles.backdrop}>
       <div className={styles.modal}>
-        <p className={styles.text}>Do you want to delete the contact?</p>
+        <p className={styles.text}>Do you want to delete the contact:</p>
+        <p className={styles.text}>{name}?</p>
         <div className={styles.wrapBtn}>
           <button onClick={onCloseModal} className={styles.btn} type="button">
             No
