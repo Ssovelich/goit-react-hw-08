@@ -9,14 +9,14 @@ import { IoMdClose } from "react-icons/io";
 import { ContsctSchema } from "../../utils/schemas";
 import toast from "react-hot-toast";
 
-const ContactEditForm = ({ id, name, number }) => {
+const ContactEditForm = ({ contactId, name, number }) => {
   const dispatch = useDispatch();
 
   const nameFieldId = useId();
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ ...values, id }))
+    dispatch(editContact({ ...values, contactId }))
       .unwrap()
       .then(() => {
         toast.success("Contact is edited successfully!");

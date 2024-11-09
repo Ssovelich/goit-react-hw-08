@@ -10,15 +10,7 @@ const ContactList = () => {
     <div>
       <ul className={styles.contactList}>
         {visibleContacts?.map((contact) => {
-          return (
-            <Contact
-              contact={contact}
-              key={contact.id}
-              // id={contact.id}
-              // name={contact.name}
-              // number={contact.number}
-            />
-          );
+          return <Contact contact={contact} key={contact.id} />;
         })}
       </ul>
     </div>

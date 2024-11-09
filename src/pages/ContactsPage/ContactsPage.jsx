@@ -1,5 +1,7 @@
+import styles from "./ContactsPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectContacts,
   selectCuretnContact,
   selectError,
   selectLoading,
@@ -14,7 +16,7 @@ import ContactEditForm from "../../components/ContactEditForm/ContactEditForm";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
-
+  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const curetnContact = useSelector(selectCuretnContact);
@@ -24,15 +26,7 @@ const ContactsPage = () => {
   }, [dispatch]);
   return (
     <div>
-      <h1
-        style={{
-          textAlign: "center",
-          color: "#655247",
-          textShadow: "0px 0px 10px #655247",
-        }}
-      >
-        Phonebook
-      </h1>
+      <h1 className={styles.title}>Phonebook</h1>
       {!curetnContact ? (
         <ContactForm />
       ) : (
@@ -41,9 +35,14 @@ const ContactsPage = () => {
       <SearchBox />
       {isLoading && !error && <Loader />}
       {error && (
-        <p>
+        <p className={styles.text}>
           Oops, some error occured &quot;{error}&quot;. Please, try again later
           🤷‍♂️.
+        </p>
+      )}
+      {Array.isArray(contacts) && contacts.length === 0 && (
+        <p className={styles.text}>
+          There are no contacts in your phonebook yet!
         </p>
       )}
       <ContactList />

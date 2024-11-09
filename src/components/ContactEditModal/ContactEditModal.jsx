@@ -1,18 +1,19 @@
-import { IoMdClose } from "react-icons/io";
-import { ContsctSchema } from "../../utils/schemas";
 import styles from "./ContactEditModal.module.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useEffect, useId } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import MaskedInput from "react-text-mask";
+import { IoMdClose } from "react-icons/io";
+
+import { ContsctSchema } from "../../utils/schemas";
 import { editContact } from "../../redux/contacts/operations";
 // import { setCurentContact } from "../../redux/contacts/slice";
-import MaskedInput from "react-text-mask";
 
 const ContactEditModal = ({
   onCloseEditModal,
   onBackdropClick,
-  id,
+  contactId,
   name,
   number,
 }) => {
@@ -22,7 +23,7 @@ const ContactEditModal = ({
   const numberFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ ...values, id }))
+    dispatch(editContact({ ...values, contactId }))
       .unwrap()
       .then(() => {
         toast.success("Contact is edited successfully!");

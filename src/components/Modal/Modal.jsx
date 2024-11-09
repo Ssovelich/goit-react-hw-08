@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 
-const Modal = ({ onCloseModal, id, onBackdropClick }) => {
+const Modal = ({ onCloseModal, contactId, onBackdropClick }) => {
   const dispatch = useDispatch();
 
-  const onDeleteContact = (id) => {
-    const action = deleteContact(id);
+  const onDeleteContact = (contactId) => {
+    const action = deleteContact(contactId);
 
     dispatch(action)
       .unwrap()
@@ -44,7 +44,7 @@ const Modal = ({ onCloseModal, id, onBackdropClick }) => {
           </button>
           <button
             onClick={() => {
-              onDeleteContact(id);
+              onDeleteContact(contactId);
             }}
             type="button"
             className={styles.btn}

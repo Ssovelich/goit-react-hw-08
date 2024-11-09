@@ -1,16 +1,18 @@
 import styles from "./Contact.module.css";
+import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
-// import { useDispatch } from "react-redux";
-// import { setCurentContact } from "../../redux/contacts/slice";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
-// import { deleteContact } from "../../redux/contacts/operations";
+
 import Modal from "../Modal/Modal";
 import ContactEditModal from "../ContactEditModal/ContactEditModal";
+
+// import { useDispatch } from "react-redux";
+// import { setCurentContact } from "../../redux/contacts/slice";
+// import { deleteContact } from "../../redux/contacts/operations";
 // import { useState } from "react";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
-import { useState } from "react";
 // import { selectOpenModal } from "../../redux/contacts/selectors";
 
 const Contact = ({ contact }) => {
@@ -71,11 +73,11 @@ const Contact = ({ contact }) => {
     <>
       <li className={styles.contactListItem}>
         <div>
-          <p className={styles.name}>
+          <h3 className={styles.name}>
             <FaUser className={styles.icon} />
             &nbsp;
             {contact.name}
-          </p>
+          </h3>
           <p className={styles.number}>
             <FaPhone className={styles.icon} />
             &nbsp;
@@ -88,12 +90,7 @@ const Contact = ({ contact }) => {
         {/* <button className={styles.btnDel} onClick={handleDelete} id={id}>
           <MdDelete size={25} />
         </button> */}
-        <button
-          className={styles.btnEdit}
-          onClick={onOpenEditModal}
-
-          // contact={contact}
-        >
+        <button className={styles.btnEdit} onClick={onOpenEditModal}>
           <CiEdit size={25} />
         </button>
         {/* <button
@@ -112,14 +109,14 @@ const Contact = ({ contact }) => {
         {isOpenModal && (
           <Modal
             onCloseModal={onCloseModal}
-            id={contact.id}
+            contactId={contact.id}
             onBackdropClick={onBackdropClick}
           />
         )}
         {isOpenEditModal && (
           <ContactEditModal
             onCloseEditModal={onCloseEditModal}
-            id={contact.id}
+            contactId={contact.id}
             name={contact.name}
             number={contact.number}
             onBackdropClick={onBackdropClick}
