@@ -20,14 +20,6 @@ const contactsSlice = createSlice({
     setCurentContact(state, action) {
       state.curentContact = action.payload;
     },
-    openModal(state, action) {
-      state.isOpenModal = true;
-      state.contactDelete = action.payload;
-    },
-    closeModal(state) {
-      state.isOpenModal = false;
-      state.contactDelete = null;
-    },
   },
   extraReducers: (builder) =>
     builder
