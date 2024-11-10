@@ -11,23 +11,30 @@ import ContactEditModal from "../ContactEditModal/ContactEditModal";
 const Contact = ({ contact }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
+  // const scrollWidth = window.innerWidth - document.documentElement.clientWidth;
+  // const padding = { scrollWidth } + "20px";
+
   const onOpenModal = () => {
     setIsOpenModal(true);
     document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = "37px";
   };
   const onCloseModal = () => {
     setIsOpenModal(false);
     document.body.style.overflow = "auto";
+    document.body.style.paddingRight = "20px";
   };
 
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const onOpenEditModal = () => {
     setIsOpenEditModal(true);
     document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = "37px";
   };
   const onCloseEditModal = () => {
     setIsOpenEditModal(false);
     document.body.style.overflow = "auto";
+    document.body.style.paddingRight = "20px";
   };
 
   const onBackdropClick = (event) => {
