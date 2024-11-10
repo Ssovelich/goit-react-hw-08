@@ -11,38 +11,35 @@ import ContactEditModal from "../ContactEditModal/ContactEditModal";
 const Contact = ({ contact }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  function getPageScrollbarWidth() {
+  function getPageScrollWidth() {
     const viewportWidth = window.innerWidth;
-    console.log("viewportWidth:", viewportWidth);
     const documentWidth = document.documentElement.clientWidth;
-    console.log("documentWidth:", documentWidth);
     return viewportWidth - documentWidth;
   }
 
-  const scrollbarWidthPlus20 = getPageScrollbarWidth() + 20;
-  console.log(scrollbarWidthPlus20);
+  const scrollWidth = getPageScrollWidth();
 
   const onOpenModal = () => {
     setIsOpenModal(true);
     document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = `${scrollbarWidthPlus20}px`;
+    document.body.style.paddingRight = `${scrollWidth + 20}px`;
   };
   const onCloseModal = () => {
     setIsOpenModal(false);
     document.body.style.overflow = "auto";
-    // document.body.style.paddingRight = "20px";
+    document.body.style.paddingRight = "20px";
   };
 
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const onOpenEditModal = () => {
     setIsOpenEditModal(true);
     document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = "37px";
+    document.body.style.paddingRight = `${scrollWidth + 20}px`;
   };
   const onCloseEditModal = () => {
     setIsOpenEditModal(false);
     document.body.style.overflow = "auto";
-    document.body.style.paddingRight = "20px";
+    // document.body.style.paddingRight = "20px";
   };
 
   const onBackdropClick = (event) => {
