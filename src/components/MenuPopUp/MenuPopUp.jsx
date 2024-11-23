@@ -29,6 +29,12 @@ const MenuPopUp = ({ onBackdropClick, userEmail, onCloseMenuPopUp }) => {
         <p className={styles.userEmail}>
           <FaUser className={styles.icon} /> {userEmail}
         </p>
+        <hr
+          style={{
+            border: "1px solid #56453e",
+            margin: "10px 0",
+          }}
+        />
         <a
           className={styles.logOut}
           type="button"
