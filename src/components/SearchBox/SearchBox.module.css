@@ -30,4 +30,5 @@
 }
 .searchInput:focus {
   border-radius: 50px;
+  box-shadow: 0px 4px 6px 2px #655247;
 }

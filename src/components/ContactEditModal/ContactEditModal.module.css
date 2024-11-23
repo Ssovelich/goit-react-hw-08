@@ -39,6 +39,7 @@
 .btnClose:hover {
   background-color: #ffffff;
   color: #56453e;
+  box-shadow: 0px 4px 6px 2px #655247;
 }
 .formItem {
   display: flex;
@@ -65,6 +66,7 @@
 }
 .field:focus {
   border-radius: 50px;
+  box-shadow: 0px 4px 6px 2px #655247;
 }
 .btn {
   display: flex;
@@ -84,6 +86,7 @@
 .btn:hover {
   background-color: #56382d86;
   border-radius: 50px;
+  box-shadow: 0px 4px 6px 2px #655247;
 }
 .error {
   color: #92000a;

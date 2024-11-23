@@ -1,0 +1,35 @@
+.backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+}
+.popUp {
+  background: #adc177;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  right: 10%;
+  top: 75px;
+  color: #56453e;
+}
+.icon {
+  vertical-align: middle;
+}
+.userEmail {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #56453e;
+  margin-bottom: 10px;
+}
+.logOut {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+}
+.logOut:hover {
+  color: #a27f64;
+}

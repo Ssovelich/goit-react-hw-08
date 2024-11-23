@@ -6,7 +6,7 @@
   backdrop-filter: blur(3px);
 }
 .modal {
-  background: #adc177;
+  background: #a27f64;
   width: 400px;
   overflow: auto;
   padding: 20px;
@@ -15,9 +15,11 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: #56453e;
+  color: #ffffff;
 }
 .text {
+  display: flex;
+  align-items: center;
   text-align: center;
   font-weight: 500;
   font-size: 20px;
@@ -48,4 +50,5 @@
 .btn:hover {
   background-color: #56382d86;
   border-radius: 50px;
+  box-shadow: 0px 4px 6px 2px #655247;
 }

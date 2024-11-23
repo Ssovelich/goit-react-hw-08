@@ -29,8 +29,25 @@
   background-color: #56382d86;
   border-radius: 50px;
 }
-
-.wrapper {
+.btnAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #56382d;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #56382d;
+  border-radius: 50px;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+.btnAvatar:hover {
+  background-color: #56382d86;
+  box-shadow: 0px 4px 6px 2px #655247;
+}
+/* .wrapper {
   display: flex;
   gap: 10px;
   margin-right: 50px;
@@ -39,4 +56,4 @@
 .username {
   font-weight: 700;
   color: black;
-}
+} */
