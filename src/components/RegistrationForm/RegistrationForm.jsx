@@ -2,6 +2,8 @@ import styles from "./RegistrationForm.module.css";
 import { ErrorMessage, Form, Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 import { apiRegister } from "../../redux/auth/operations";
 import { RegistrationSchema } from "../../utils/schemas";
@@ -10,6 +12,11 @@ const initialValues = { name: "", email: "", password: "" };
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible((prevState) => !prevState);
+  };
 
   const handleSubmit = (values, actions) => {
     dispatch(apiRegister(values))
@@ -66,17 +73,24 @@ const RegistrationForm = () => {
             component="span"
           ></ErrorMessage>
         </div>
-        <div className={styles.formItem}>
+        <div className={`${styles.formItem} ${styles.passwordContainer}`}>
           <label className={styles.label} htmlFor="password">
             Password
           </label>
           <Field
             className={styles.field}
-            type="password"
+            type={isPasswordVisible ? "text" : "password"}
             name="password"
             id="password"
             placeholder="Enter your password"
           />
+          <button
+            type="button"
+            className={styles.togglePassword}
+            onClick={togglePasswordVisibility}
+          >
+            {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+          </button>
           <ErrorMessage
             className={styles.error}
             name="password"
