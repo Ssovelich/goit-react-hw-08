@@ -41,7 +41,7 @@ const RegistrationForm = () => {
       <Form className={styles.form}>
         <div className={styles.formItem}>
           <label className={styles.label} htmlFor="name">
-            Username
+            Name
           </label>
           <Field
             className={styles.field}
@@ -100,6 +100,14 @@ const RegistrationForm = () => {
         <button className={styles.btn} type="submit">
           Register
         </button>
+        <div className={styles.wrapLoginPrompt}>
+          <span className={styles.loginPrompt}>
+            Already have an acccount?&nbsp;
+          </span>
+          <a href="/login" className={styles.loginLink}>
+            Login
+          </a>
+        </div>
       </Form>
     </Formik>
   );

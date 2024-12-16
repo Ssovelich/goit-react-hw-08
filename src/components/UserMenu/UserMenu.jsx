@@ -40,7 +40,7 @@ export const UserMenu = () => {
       </button>
       <Tooltip
         id="my-tooltip"
-        style={{ backgroundColor: "#a27f64", color: "#ffffff" }}
+        style={{ backgroundColor: "#2f4f4f", color: "#ffffff" }}
       />
       {isOpenMenuPopUp && (
         <MenuPopUp

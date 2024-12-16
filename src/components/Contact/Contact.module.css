@@ -3,14 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #56453e;
   border-radius: 8px;
   padding: 15px;
   width: 300px;
   height: 100px;
-  background: #56453e;
+  background: #2f4f4f;
   color: #ffffff;
-  box-shadow: 4px 4px 6px 4px #a27f64;
 }
 .icon {
   vertical-align: middle;
@@ -44,7 +42,8 @@
 }
 .btnDel:hover {
   background-color: #ffffff;
-  color: #56453e;
+  color: #0a1828;
+  box-shadow: 0px 4px 6px 2px #0a1828;
 }
 .btnEdit {
   position: absolute;
@@ -64,5 +63,6 @@
 }
 .btnEdit:hover {
   background-color: #ffffff;
-  color: #56453e;
+  color: #0a1828;
+  box-shadow: 0px 4px 6px 2px #0a1828;
 }

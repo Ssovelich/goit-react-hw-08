@@ -1,10 +1,26 @@
 .title {
   text-align: center;
-  color: #655247;
+  color: #bfa181;
   text-shadow: 0px 0px 10px #655247;
   margin-bottom: 25px;
 }
 .img {
   display: block;
   margin: 0 auto;
+}
+.descriptionText {
+  text-align: center;
+  color: #bfa181;
+  margin-bottom: 25px;
+}
+.list {
+  margin: 0 0 20px 60px;
+}
+.listItem {
+  font-weight: 400;
+  font-size: 20px;
+  color: #bfa181;
+}
+.icon {
+  vertical-align: middle;
 }

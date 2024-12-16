@@ -82,6 +82,14 @@ const LoginForm = () => {
         <button className={styles.btn} type="submit">
           Log In
         </button>
+        <div className={styles.wrapRegisterPrompt}>
+          <span className={styles.registerPrompt}>
+            Don&prime;t have an account?&nbsp;
+          </span>
+          <a href="/register" className={styles.registerLink}>
+            Register
+          </a>
+        </div>
       </Form>
     </Formik>
   );

@@ -5,15 +5,15 @@
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #65524785;
+  color: #198b8781;
 }
 .link:hover {
-  color: #a27f64;
+  scale: 1.1;
 }
 
 .link.active {
-  color: #655247;
+  color: #23b9b4;
 }
 .link.active:hover {
-  color: #a27f64;
+  scale: 1.1;
 }

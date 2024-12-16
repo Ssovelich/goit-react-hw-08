@@ -4,14 +4,14 @@
   inset: 0;
 }
 .popUp {
-  background: #adc177;
+  background: #2f4f4f;
   overflow: auto;
   padding: 20px;
   border-radius: 8px;
   position: absolute;
   right: 10%;
   top: 75px;
-  color: #56453e;
+  color: #23b9b4;
 }
 .icon {
   vertical-align: middle;
@@ -29,5 +29,5 @@
   cursor: pointer;
 }
 .logOut:hover {
-  color: #a27f64;
+  color: #0a1828;
 }

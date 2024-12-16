@@ -24,7 +24,6 @@ const ContactsPage = () => {
   }, [dispatch]);
   return (
     <div>
-      <h1 className={styles.title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       {isLoading && !error && <Loader />}

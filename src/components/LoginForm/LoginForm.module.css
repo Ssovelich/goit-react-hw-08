@@ -1,14 +1,12 @@
 .form {
   display: flex;
   flex-direction: column;
-  border: 1px solid #adc177;
   border-radius: 8px;
   padding: 15px;
   width: 400px;
   margin: 20px auto;
-  background: #adc177;
-  color: #ffffff;
-  box-shadow: 4px 4px 6px 2px #655247;
+  background: #2f4f4f;
+  color: #ff4500;
 }
 .formItem {
   display: flex;
@@ -22,7 +20,7 @@
 }
 .field {
   height: 40px;
-  border: 2px solid #adc177;
+  border: 2px solid #2f4f4f;
   border-radius: 4px;
   padding-left: 8px;
   font-weight: 300;
@@ -31,11 +29,11 @@
   transition: all 0.3s ease-in-out;
 }
 .field:hover {
-  border: 2px solid #655247;
+  scale: 1.03;
 }
 .field:focus {
   border-radius: 50px;
-  box-shadow: 0px 4px 6px 2px #655247;
+  box-shadow: 0px 4px 6px 2px #0a1828;
 }
 .passwordContainer {
   position: relative;
@@ -55,8 +53,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #56382d;
-  margin: 0 auto;
+  background-color: #56382d86;
+  margin: 0 auto 10px;
   height: 40px;
   width: 150px;
   border: 1px solid #56382d;
@@ -67,10 +65,29 @@
   transition: all 0.3s ease-in-out;
 }
 .btn:hover {
-  background-color: #56382d86;
   border-radius: 50px;
-  box-shadow: 0px 4px 6px 2px #655247;
+  box-shadow: 0px 4px 6px 2px #0a1828;
 }
 .error {
-  color: #92000a;
+  color: #dc143c;
+  text-align: center;
+}
+.wrapRegisterPrompt {
+  display: flex;
+  justify-content: center;
+}
+.registerPrompt {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.registerLink {
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: none;
+  color: #0a1828;
+}
+
+.registerLink:hover {
+  text-decoration: underline;
 }

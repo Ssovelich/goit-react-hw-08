@@ -31,7 +31,7 @@ const MenuPopUp = ({ onBackdropClick, userEmail, onCloseMenuPopUp }) => {
         </p>
         <hr
           style={{
-            border: "1px solid #56453e",
+            border: "1px solid #bfa181",
             margin: "10px 0",
           }}
         />

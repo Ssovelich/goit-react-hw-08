@@ -1,14 +1,12 @@
 .searchWrap {
   display: flex;
   flex-direction: column;
-  border: 1px solid #a27f64;
   border-radius: 8px;
   padding: 15px;
   width: 400px;
   margin: 0 auto 20px auto;
-  background: #a27f64;
+  background: #2f4f4f;
   color: #ffffff;
-  box-shadow: 4px 4px 6px 2px #655247;
 }
 .searchLabel {
   font-weight: 400;
@@ -17,7 +15,7 @@
 }
 .searchInput {
   height: 40px;
-  border: 2px solid #a27f64;
+  border: 2px solid #2f4f4f;
   border-radius: 4px;
   padding-left: 8px;
   font-weight: 300;
@@ -26,9 +24,9 @@
   transition: all 0.3s ease-in-out;
 }
 .searchInput:hover {
-  border: 2px solid #655247;
+  scale: 1.03;
 }
 .searchInput:focus {
   border-radius: 50px;
-  box-shadow: 0px 4px 6px 2px #655247;
+  box-shadow: 0px 4px 6px 2px #0a1828;
 }
